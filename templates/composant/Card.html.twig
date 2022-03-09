@@ -1,0 +1,12 @@
+
+
+
+<div class="col-md-2 mb-3">
+    <div class="card card_home shadow">
+        <img src="{{ produit.photoUrl }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-title fw-bold"> {{ produit.titre }} </p>
+            <a href="{{ path('single_produit', {id: produit.id} ) }}" class="btn btn-primary">Voir le produit</a>
+        </div>
+    </div>
+</div>

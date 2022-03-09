@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-
-
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -17,14 +15,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "controller"=App\Controller\Api\ProduitCreateController::class,
  *      "denormalization_context"={"groups"={"product:create"}},
  *      "validation_groups"={Produits::class, "validationGroups"}
- *  }
+ *  },
  * },
  * itemOperations={
  *  "get"={
  *      "normalization_context"={"product:read"}
  *  },
  * "put"={
- *     "denormalization_context"={"groups"={"product:edit"}}
+ *     "denormalization_context"={"groups"={"product:edit"}},
+ *     "validation_groups"={Produits::class, "validationGroups"}
  *  },
  *  "delete"={
  *      "denormalization_context"={"groups"={"product:delete"}}
@@ -57,7 +56,7 @@ class Produits
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"product:read", "product:create"})
+     * @Groups({"product:read", "product:edit", "product:create"})
      *
      */
     private $ean;
@@ -133,11 +132,21 @@ class Produits
 
     public static function validationGroups(self $produit)
     {
-        if($produit->glucides < 500){
-            return ['product:create', 'product:edit'];
+
+       $regexURL = preg_match('%^((http(s)?://)|(www\.))([a-z0-9-].?)+(:[0-9]+)?(/.*)?$%i', $produit->photoUrl, $match);
+       $message = "Certaines valeurs ne sont pas autorisées ou fausses";
+
+        $calculKcal = $produit->kj / 4.18;
+
+        if($produit->acidesGrasSatures <= $produit->matieresGrasses && $produit->sucres <= $produit->glucides
+            && $regexURL && $produit->kcal = $calculKcal ){
+                return ['product:create', 'product:edit'];
         }else{
-            dd('false');
+            dd($message);
         }
+
+
+
     }
 
 

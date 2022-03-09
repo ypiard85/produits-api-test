@@ -22,4 +22,15 @@ class HomeController extends AbstractController
             'produits' => $produits
         ]);
     }
+
+    /**
+     * @Route("/produit/{id}", name="single_produit" )
+     */
+    public function read(Produits $produit, $id): Response
+    {
+
+        return $this->render('home/single-produit.html.twig', [
+            'produit' => $produit
+        ]);
+    }
 }

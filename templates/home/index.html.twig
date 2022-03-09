@@ -1,28 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Liste des produits{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <ul>
-        {% for produit in produits %}
-        <li> {{ produit.titre }}
-            <ul>
-                <strong>Engredients</strong>
-                {% for ingredient in produit.ingredients %}
-                <li> {{ ingredient }} </li>
-                {% endfor %}
-                <strong>Nutriments</strong>
-
-            </ul>
-
-        </li>
-        {% endfor %}
-    </ul>
+<div class="wrapper">
+    <h1 align="center">Aliments</h1>
+    <div class="container mt-5">
+        <div class="row">
+            {% for produit in produits %}
+                {% include './composant/Card.html.twig' with {produit} only %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,10 @@
+
+.card_home img{
+    width: auto;
+    height: 100px;
+    margin: auto;
+}
+
+.card-body{
+   align-items: baseline;
+}

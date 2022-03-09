@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         $produits->setTitre('Nutella pâte à tartiner aux noisettes et au cacao 1kg - Ferrero - 1 kg')
                 ->setPhotoUrl('https://fr.openfoodfacts.org/images/products/301/762/042/5035/front_fr.372.400.jpg')
                 ->setIngredients(['Sucre', 'huile de palme', 'NOISETTES 13%', 'LAIT écrémé en poudre 8.7%'])
-                ->setEan(rand(1000000000000, 50000000000000))
+                ->setEan('3017620425035')
                 ->setKcal(539)
                 ->setKj(2252)
                 ->setMatieresGrasses(30.9)
