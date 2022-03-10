@@ -63,7 +63,7 @@ class Produits
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"product:read", "product:edit", "product:create"})
+     * @Groups({"product:read", "product:create"})
      *
      */
     private $kcal;
